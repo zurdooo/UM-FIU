@@ -1,0 +1,27 @@
+Final Project Assignment 2
+Release on: Wednesday 4/3/2024
+Due on Sunday, 4/28/2023 @ 11:59pm via Blackboard
+
+Project Description
+
+Write a Python program that display the menu:
+1.	Calculate Student GPA
+2.  Lottery Number Generator
+3.  Pig Latin
+4.  Rock, Paper, Scissors Game
+9.  Exit
+
+The program must have a function main() that display the menu above to let users select one of the 4 options. Each option is equivalent to a function call such as calculate_student_gpa, lottery_number_generator, pig_latin, rock_paper_scissors_game.
+Quick hints: this means you're using both if __name__ == '__main__':  AND def main()  in your program.
+The main function should be placed at the BOTTOM of your program right before the statement if __name__ == '__main__'.
+
+Submission requirement:
+You are asked to submit 2 files: a source code file (in .py file extension) and a project/course reflection (in .pdf or .docx file extension).
+If you submit the wrong source code file extension and/or wrong file format, then it is automatically graded a zero for this final project.
+It is the student’s responsibility to screenshot proof of submission right after uploading the project in Blackboard as a backup evident.
+The source code must be well-commented. The bare minimum is as follows:
+Every function and class must be commented and described.
+Major calculations and steps must be described.
+The source code must be in .py Python file extension. Any other files such as .docx, .pdf will not be considered a valid submission and automatically receives zero.
+The source code filename must be in this format: YourLastName_YourFirstName_Final_Project
+The project/course reflection filename should be a document file .docx or .pdf in this format: YourLastName_YourFirstName_CSC115_Spring2024_Reflection
