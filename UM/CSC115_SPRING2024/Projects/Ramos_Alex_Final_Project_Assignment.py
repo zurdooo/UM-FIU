@@ -169,7 +169,6 @@ def pig_latin():
 
 
 # ROCK PAPER SCISSORS
-# FIX
 def rock_paper_scissors():
     print("-" * 50)
     print("GENERATE LUCKY NUMBERS")
@@ -179,9 +178,7 @@ def rock_paper_scissors():
     # User input
     user_choice = input("Enter 'rock', 'paper', or 'scissors': ")
     # validate user input
-    while (
-        user_choice != "rock" and user_choice != "paper" and user_choice != "scissors"
-    ):
+    while (user_choice != "rock" and user_choice != "paper" and user_choice != "scissors"):
         user_choice = input("Invalid input. Enter 'rock', 'paper', or 'scissors': ")
     if computer_choice == 1:
         print("Player's Choice:", user_choice)
