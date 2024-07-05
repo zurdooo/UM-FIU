@@ -1,43 +1,14 @@
-public class Team {
-   private String name;
-   private int wins;
-   private int losses;
-   
-   
-   //       setName(), setWins(), setLosses()
-   public void setName(String name){
-      this.name = name;
-   }
-   public void setWins(int win){
-      this.wins = win;
-   }
-   public void setLosses(int loss){
-      this.losses = loss;
-   }
-   
-   //       getName(), getWins(), getLosses()
-   public String getName(){
-      return name;
+import java.util.Scanner;
+
+public class LabProgram {
+   public static void main(String[] args) {
+      Scanner scnr = new Scanner(System.in);
+      int[] userList = new int[20];   // List of numElement integers specified by the user
+      int numElements;                // Number of integers in user's list
+      // Add more variables as needed
+
+      numElements = scnr.nextInt();   // Input begins with number of integers that follow
       
+      /* Type your code here. */
    }
-   public int getWins(){
-      return wins;
-   }
-   public int getLosses(){
-      return losses;
-   }
-   
-   public double getWinPercentage() {
-      return (double)wins / (wins + losses);
-   }
-   
-   public void printStanding() {
-        double winPercentage = getWinPercentage();
-        System.out.printf("%.2f\n", "Win percentage: ", winPercentage);
-        if (winPercentage >= 0.5) {
-            System.out.println(" Winning average");
-        } else {
-            System.out.println(" Losing average");
-        }
-    }
 }
