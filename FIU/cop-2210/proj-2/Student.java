@@ -45,8 +45,7 @@ class Student {
         this.gpa = gpa;
     }
 
-    // Override toString method so that we can print the object
-    @Override
+    // toString method so that we can print the object
     public String toString() {
         return "Student{" +
                 "firstName='" + firstName + '\'' +
