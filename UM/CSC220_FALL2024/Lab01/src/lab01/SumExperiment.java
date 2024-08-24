@@ -1,4 +1,4 @@
-// package lab01;
+package lab01;
 
 public class SumExperiment {
 
@@ -28,6 +28,7 @@ public class SumExperiment {
                 right--;
             }
         }
+        return -1;
     }
 
     public static void main(String[] args) {
