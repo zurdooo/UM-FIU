@@ -12,5 +12,9 @@ public class testing {
         test_2[1] = 5;
         System.out.println("test_2: " + Arrays.toString(test_2));
         System.out.println("test_1: " + Arrays.toString(test_1));
+        int x =5;
+        int y = x;
+        y = 6;
+        System.out.println(x ==y);
     }
 }
