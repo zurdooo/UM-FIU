@@ -1,4 +1,4 @@
-package lab02;
+// package lab02;
 
 public class Matrix {
 	int numRows;
@@ -30,9 +30,19 @@ public class Matrix {
 		 * 4) create a new matrix to hold the data
 		 * 5) copy the data over
 		 */
-		numRows = d[0].length;
-		numColumns = d[1].length;
 
+		// Check if d[0] or d[1] exists
+		if (d.length == 0) {
+			numRows = 0;
+			numColumns = 0;
+			data = d;
+			return;
+		}
+		// Getting lengths
+		numRows = d.length;
+		numColumns = d[0].length;
+		// Creating new matrix
+		data = d;
 	}
 
 	@Override // instruct the compiler that we do indeed intend for this method to override
@@ -46,7 +56,16 @@ public class Matrix {
 		 * specified in the instruction for M1
 		 * anything else IS NOT acceptable
 		 */
-		return ""; // placeholder
+		String final_string = "";
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numColumns; j++) {
+				// Add current num to string
+				final_string += data[i][j] + " ";
+			}
+			// Add a new line after each row
+			final_string += "\n";
+		}
+		return final_string;
 	}
 
 	/**
@@ -74,7 +93,23 @@ public class Matrix {
 		 * You must return the correct value after determining if
 		 * this matrix is equal to the input matrix.
 		 */
-		return false; // placeholder
+
+		// Check if the dimensions are the same (row and col)
+		if (this.numRows != m.numRows || this.numColumns != m.numColumns) {
+			return false;
+		}
+
+		// Check if every element is the same
+		for (int i = 0; i < this.numRows; i++) {
+			for (int j = 0; j < this.numColumns; j++) {
+				// If a single element is different, return false
+				if (data[i][j] != m.data[i][j]) {
+					return false;
+				}
+			}
+		}
+		// If false has not been returned yet, the matrices are equal
+		return true;
 	}
 
 	/**
@@ -93,7 +128,15 @@ public class Matrix {
 		 * Replace the below return statement with the correct code.
 		 * Implement the logic to compute the transpose of this matrix.
 		 */
-		return null; // placeholder
+		for (int i = 0; i < this.numRows; i++) {
+			for (int j = i; j < this.numColumns; j++) {
+				int placeholder = this.data[i][j];
+				this.data[i][j] = this.data[j][i];
+				this.data[j][i] = placeholder;
+			}
+		}
+		
+		return this; // placeholder
 	}
 
 	/**
@@ -111,6 +154,7 @@ public class Matrix {
 	 *         null if the matrices are not compatible for addition.
 	 */
 	public Matrix add(Matrix m) {
+
 		/*
 		 * TODO: Assignment part 3
 		 * Replace the below return statement with the correct code.
@@ -119,7 +163,24 @@ public class Matrix {
 		 * in with
 		 * the correct values for matrix addition.
 		 */
-		return null; // placeholder
+
+		// Check if the dimensions are the same
+		if (this.numRows != m.numRows || this.numColumns != m.numColumns) {
+			return null;
+		}
+		// If the dimensions are the same, add the matrices
+		else {
+			// Create sum matrix
+			Matrix sum_matrix = new Matrix(this.numRows, this.numColumns);
+			// Loop through each element and add them together
+			for (int i = 0; i < this.numRows; i++) {
+				for (int j = 0; j < this.numColumns; j++) {
+					sum_matrix.data[i][j] = this.data[i][j] + m.data[i][j];
+				}
+			}
+			return sum_matrix;
+		}
+
 	}
 
 	/**
@@ -148,7 +209,25 @@ public class Matrix {
 		 * the resulting matrix and fill it in with the correct values for matrix
 		 * multiplication.
 		 */
-		return null; // placeholder
+		// Check if the dimensions are the same
+		if (this.numColumns != m.numRows) {
+			return null;
+		}else{
+			// Create product matrix
+			Matrix product_matrix = new Matrix(this.numRows, m.numColumns);
+			for (int i = 0; i < this.numRows; i++) {
+				for (int j = 0; j < m.numColumns; j++) {
+					// Initialize the value to 0, running sum
+					int running_sum = 0;
+					for (int k = 0; k < this.numColumns; k++){
+						running_sum += this.data[i][k] * m.data[k][j];
+
+					}
+					product_matrix.data[i][j] = running_sum;
+				}
+			}
+			return product_matrix;
+		}
 	}
 
 }
