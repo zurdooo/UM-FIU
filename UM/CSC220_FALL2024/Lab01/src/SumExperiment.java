@@ -1,5 +1,3 @@
-package lab01;
-
 public class SumExperiment {
 
     /**
