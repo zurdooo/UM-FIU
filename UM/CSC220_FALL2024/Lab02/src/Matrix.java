@@ -102,7 +102,7 @@ public class Matrix {
 	 * @return A new Matrix that is the transpose of this Matrix.
 	 */
 	public Matrix transpose() {
-		// Loop through each element and swap the row and column, or the x coirdinate
+		// Loop through each element and swap the row and column, or the x coordinate
 		// and y
 		for (int i = 0; i < this.numRows; i++) {
 			for (int j = i; j < this.numColumns; j++) {
