@@ -134,7 +134,7 @@ public class Library {
     // Lab Part 3
     // iterate through the library
     for (LibraryBook book : library) {
-      // look for the book 
+      // look for the book
       if (book.getIsbn() == isbn) {
         // check if book is checked out
         if (book.getHolder() == null) {
@@ -142,9 +142,7 @@ public class Library {
           book.checkout(holder, new GregorianCalendar(year, month, day));
           // checkout successful
           return true;
-        }
-        // if the book is already checked out
-        else {
+        } else {
           return false;
         }
 
