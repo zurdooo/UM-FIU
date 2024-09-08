@@ -168,7 +168,19 @@ public class Library {
    */
   public ArrayList<LibraryBook> lookup(String holder) {
     // Assignment Part 1
-    return null; // placeholder
+
+    // Create arraylist to return books that the holder checked out
+    ArrayList<LibraryBook> checkedOutBooks = new ArrayList<LibraryBook>();
+    /// loop through the library
+    for (LibraryBook book : library) {
+      // if the book is checked out by the holder
+      if (book.getHolder() != null && book.getHolder().equals(holder)) {
+        // add the book to the list
+        checkedOutBooks.add(book);
+      }
+    }
+    // return the list
+    return checkedOutBooks;
   }
 
   /**
@@ -182,20 +194,25 @@ public class Library {
    */
   public boolean checkin(long isbn) {
     // Assignment Part 2.1
-    return false; // placeholder
-  }
+    // iterate through the library
+    for (LibraryBook book : library) {
+      // look for the book to cheeckin
+      if (book.getIsbn() == isbn) {
+        // check if book is checked out
+        if (book.getHolder() != null) {
+          // use the libray book method to checkin and set holder and duedate to null
+          book.checkin();
+          // succesful checkin so return true
+          return true;
+        }
+        // if the book holder is not null then the book is already checked in
+        else {
+          return false;
+        }
 
-  /**
-   * Unsets the holder and due date for all library books checked out by the
-   * specified holder.
-   * If no books with the specified holder are in the library, returns false;
-   * Otherwise, returns true.
-   * 
-   * @param holder --
-   *               holder of the library books to be checked in
-   */
-  public boolean checkin(String holder) {
-    // Assignment Part 2.1
-    return false; // placeholder
+      }
+    }
+    // if we reach here then the book is not in the library
+    return false;
   }
 }
