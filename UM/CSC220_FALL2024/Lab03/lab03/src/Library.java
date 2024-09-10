@@ -215,4 +215,19 @@ public class Library {
     // if we reach here then the book is not in the library
     return false;
   }
+  public boolean checkin(String holder){
+    // Assignment Part 2.1
+    Boolean any_book_checked = false;
+    // iterate through the library
+    for (LibraryBook book : library) {
+      // look for book checked in by holder
+      if (book.getHolder() != null && book.getHolder().equals(holder)){
+        // checkin book to unset holder and dude date
+        book.checkin();
+        any_book_checked = true;
+      }
+    }
+    // return true if any book was checked in
+    return any_book_checked;
+  }
 }
