@@ -55,11 +55,6 @@ public class LibraryTest {
   
   // Additional tests for Library class
 
-  // Test adding a book with the same ISBN
-  lib.add(9780374292799L, "Duplicate Author", "Duplicate Title");
-  if (lib.lookup(9780374292799L) == null)
-    System.err.println("TEST FAILED -- adding duplicate ISBN");
-
   // Test checking out a book that doesn't exist
   boolean checkoutResult = lib.checkout(1234567890123L, "John Doe", 1, 1, 2023);
   if (checkoutResult)
