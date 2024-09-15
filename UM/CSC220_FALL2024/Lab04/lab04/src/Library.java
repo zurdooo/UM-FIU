@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * Class representation of a library (a collection of library books).
@@ -293,9 +294,17 @@ public class Library<Type> { // TODO: Lab Part 2 Make the Library class generic 
    * 
    * @return a sorted list of library books by author and book title.
    */
-  // public List<LibraryBook<Type>> getOrderedByAuthor() {
-  //     // TODO Assignment part 1
-  // }
+  public List<LibraryBook<Type>> getOrderedByAuthor() {
+      // TODO Assignment part 1
+      ArrayList<LibraryBook<Type>> authororder = new ArrayList<LibraryBook<Type>>();
+      authororder.addAll(library);
+  
+      AuthorComparator comparator = new AuthorComparator();
+  
+      sort(authororder, comparator);
+  
+      return authororder;
+  }
 
   // /**
   //  * Retrieves a list of overdue library books sorted by the due date, with the oldest due date first.
@@ -307,25 +316,41 @@ public class Library<Type> { // TODO: Lab Part 2 Make the Library class generic 
   //  * 
   //  * @return a sorted list of overdue library books by due date.
   //  */
-  // public List<LibraryBook<Type>> getOverdueList() {
-  //     // TODO Assignment part 2
-  // }
+  public List<LibraryBook<Type>> getOverdueList() {
+      // TODO Assignment part 2
+      ArrayList<LibraryBook<Type>> duelist = new ArrayList<LibraryBook<Type>>();
+      duelist.addAll(library);
+  
+      DueDateComparator comparator = new DueDateComparator();
+  
+      sort(duelist, comparator);
+  
+      return duelist;
+  }
 
   // /**
   //  * Comparator that defines an ordering among library books using the author, and
   //  * book title as a tie-breaker.
   //  */
-  // protected class AuthorComparator implements Comparator<LibraryBook<Type>> {
-  //   // TODO: Assignment Part 1
-  // }
+  protected class AuthorComparator implements Comparator<LibraryBook<Type>> {
+    // TODO: Assignment Part 1
+    @Override
+      public int compare(LibraryBook<Type> a1, LibraryBook<Type> a2) {
+        // Compare the difference between the two authors
+        return (int) (a1.getAuthor().compareTo(a2.getAuthor()));
+      }
+  }
 
   // /**
   //  * Comparator that defines an ordering among library books using the due date.
   //  */
-  // protected class DueDateComparator implements Comparator<LibraryBook<Type>> {
+  protected class DueDateComparator implements Comparator<LibraryBook<Type>> {
 
-  //   // TODO: Assignment Part 2
-
-  // }
+    // TODO: Assignment Part 2
+    @Override
+      public int compare(LibraryBook<Type> d1, LibraryBook<Type> d2) {
+        // Compare the difference between the two due dates
+      }
+  }
 
 }
