@@ -1,6 +1,5 @@
 {
   "editor.tokenColorCustomizations": {
-    
     "[*Light*]": {
       "textMateRules": [
         {
@@ -21,5 +20,6 @@
         }
       ]
     }
-  }
+  },
+  "cSpell.words": ["Assignment"]
 }
