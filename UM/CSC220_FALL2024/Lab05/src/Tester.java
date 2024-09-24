@@ -14,7 +14,7 @@ public class Tester {
      * variables reflect the changes).
      * 4. Continue adding values to your **SortedBinarySet** until you go beyond its
      * original capacity. Ensure no errors occur in this case and that the
-     * **SortedBinarySet** does indeed grow.
+     * **SortedBinarySet** does indeed grow.ƒƒ
      * 5. Test your `clear()` method to see if all elements are removed from the
      * **SortedBinarySet**.
      */
