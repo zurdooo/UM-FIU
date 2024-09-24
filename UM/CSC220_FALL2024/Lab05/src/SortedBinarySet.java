@@ -16,7 +16,7 @@ public class SortedBinarySet {
 	private static final int INITIAL_STORAGE_CAPACITY = 11;
 
 	/** A flag to toggle between binary search and sequential search. */
-	public boolean usesBinarySearch = false; // Keep as false for the Lab. You will need this in the assignment.
+	public boolean usesBinarySearch = true; // Keep as false for the Lab. You will need this in the assignment.
 
 	/**
 	 * Default constructor that initializes the set with the default capacity.
@@ -35,8 +35,15 @@ public class SortedBinarySet {
 	 * @param input The array to initialize the set with.
 	 */
 	public SortedBinarySet(double[] input) {
-		// TODO: Assignment Part 1.5 - Hint: think about whether you can reuse any of
-		// the methods you have implemented to make your job easier.
+		// TODO HELP: I'm not sure if I should call the insert method here
+		// First make sure the input array is sorted
+		for (int i = 0; i < input.length - 1; i++) {
+			// Call the insert method to add the elements
+			insert(input[i]);
+		}
+		
+		capacity = INITIAL_STORAGE_CAPACITY;
+		size = 0;
 	}
 
 	/**
@@ -102,7 +109,7 @@ public class SortedBinarySet {
 	public void clear() {
 		// Set the size to 0
 		size = 0;
-		capacity = INITIAL_STORAGE_CAPACITY; 
+		capacity = INITIAL_STORAGE_CAPACITY;
 
 		// Reset theData
 		theData = new double[INITIAL_STORAGE_CAPACITY];
@@ -117,8 +124,31 @@ public class SortedBinarySet {
 	 *         exists.
 	 */
 	public boolean insert(double newVal) {
-		// TODO: Lab Part 2.7 - Insert newVal in sorted order if it does not exist
-		return false; // placeholder
+		// Check if the value already exists
+		for (int i = 0; i < size; i++) {
+			if (theData[i] == newVal) {
+				return false;
+			}
+		}
+
+		// Check if the array is full
+		if (size == capacity) {
+			grow();
+		}
+
+		// Find the index to insert the new value
+		int index = findIndex(newVal);
+
+		// Shift the elements to the right
+		for (int i = size; i > index; i--) {
+			theData[i] = theData[i - 1];
+		}
+
+		// Insert the new value
+		theData[index] = newVal;
+		size += 1;
+
+		return true;
 	}
 
 	/**
@@ -128,8 +158,17 @@ public class SortedBinarySet {
 	 * @return The index where the target is found, or -index - 1 if not found.
 	 */
 	private int sequentialFind(double target) {
-		// TODO: Lab Part 2.8 - Implement sequential search for the target
-		return 0; // placeholder
+		for (int i = 0; i < size; i++) {
+			// Target found
+			if (theData[i] == target) {
+				return i;
+				// Target is greater than the current element
+			} else if (theData[i] > target) {
+				return -i - 1;
+			}
+		}
+		// Not found so return index where it should be inserted
+		return -size - 1;
 	}
 
 	// *********************************************************************
@@ -144,8 +183,17 @@ public class SortedBinarySet {
 	 * @return true if the element was removed, false if it did not exist.
 	 */
 	public boolean remove(double element) {
-		// TODO: Assginment part 1.1
-		return false; // placeholder
+		// Element not found
+		if (findIndex(element) < 0) {
+			return false;
+		}
+		// Remove the element
+		for (int i = findIndex(element); i < size - 1; i++) {
+			theData[i] = theData[i + 1];
+		}
+		// Update the size
+		size -= 1;
+		return true;
 	}
 
 	/**
@@ -155,8 +203,24 @@ public class SortedBinarySet {
 	 * @return The index where the target is found, or -index - 1 if not found.
 	 */
 	private int binaryFind(double target) {
-		// TODO: Assginment Part 1.2
-		return 0; // placeholder
+		int low = 0;
+		int high = size - 1;
+
+		while (low <= high) {
+			int mid = (low + high) / 2;
+			// Target found
+			if (theData[mid] == target) {
+				return mid;
+				// Target is larger
+			} else if (theData[mid] < target) {
+				low = mid + 1;
+				// Target is smaller
+			} else {
+				high = mid - 1;
+			}
+		}
+		// Not found so return index where it should be inserted
+		return -low - 1;
 	}
 
 	/**
@@ -166,8 +230,11 @@ public class SortedBinarySet {
 	 * @return true if the element is found, false otherwise.
 	 */
 	public boolean contains(double element) {
-		// TODO: Assigment Part 1.3
-		return false; // placeholder
+		// Look for the element
+		if (findIndex(element) >= 0) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -177,8 +244,15 @@ public class SortedBinarySet {
 	 * @return true if all elements are found in the set, false otherwise.
 	 */
 	public boolean containsAll(double[] elements) {
-		// TODO: Assignment Part 1.4
-		return false; // placeholder
+		// Check if all elements are in the set
+		for (int i = 0; i < elements.length; i++) {
+			// If one element isn't found return false
+			if (!contains(elements[i])) {
+				return false;
+			}
+		}
+		// All elements are found
+		return true;
 	}
 
 	/**
