@@ -18,5 +18,17 @@ public class Tester {
      * 5. Test your `clear()` method to see if all elements are removed from the
      * **SortedBinarySet**.
      */
+    public static void main(String[] args) {
+        SortedBinarySet sbs = new SortedBinarySet();
+        sbs.insert(10);
+        sbs.insert(5);
+        sbs.insert(5);
 
+        System.out.println(sbs);
+
+        // Create a new SortedBinarySet with initial elements
+        SortedBinarySet sbs2 = new SortedBinarySet(new double[]{3, 6, 8, 2, 4, 7, 1, 1});
+        System.out.println(sbs2);
+
+    }
 }
