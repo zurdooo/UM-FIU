@@ -51,7 +51,7 @@ public class SortedBinarySet {
         capacity = INITIAL_STORAGE_CAPACITY;
         size = 0;
 
-        // Loop thorugh the input array
+        // Loop through the input array
         for (int i = 0; i < input.length - 1; i++) {
             // Check if element is already in the set
             if (contains(input[i])) {

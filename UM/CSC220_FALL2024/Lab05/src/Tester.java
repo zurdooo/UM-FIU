@@ -27,7 +27,7 @@ public class Tester {
         System.out.println(sbs);
 
         // Create a new SortedBinarySet with initial elements
-        SortedBinarySet sbs2 = new SortedBinarySet(new double[]{3, 6, 8, 2, 4, 7, 1, 1});
+        SortedBinarySet sbs2 = new SortedBinarySet(new double[] { 3, 6, 8, 2, 4, 7, 1, 1 });
         System.out.println(sbs2);
 
     }
