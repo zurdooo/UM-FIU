@@ -59,7 +59,7 @@ public class AnagramUtil {
             }
             return new String[]{};
         }
- /* The variables for the logic following */
+        /* The variables for the logic following */
         int end = 0, length = 1, i = 0, maxLength = 0;
 
         // Loop through stringList.
