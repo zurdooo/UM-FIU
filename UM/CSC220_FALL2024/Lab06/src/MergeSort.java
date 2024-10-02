@@ -35,7 +35,13 @@ public class MergeSort<E extends Comparable<E>> {
      */
     public void fit(E[] array) {
         // TODO: Assignment Part 3.2
-        
+        double startTime = System.nanoTime();
+        sort(array);
+        double endTime = System.nanoTime();
+
+        double sequentialTime = (endTime - startTime) / 1000;
+
+        this.c = sequentialTime / O(array.length);
     }
 
     /**
@@ -46,7 +52,7 @@ public class MergeSort<E extends Comparable<E>> {
      */
     public double predict(int n) {
         // TODO: Assignment Part 3.3
-        return Double.POSITIVE_INFINITY; // placeholder
+        return this.c * O(n);
     }
 
     /**

@@ -35,7 +35,14 @@ public class InsertionSort<E extends Comparable<E>> {
      * @param array the input array used for timing the sort
      */
     public void fit(E[] array) {
-        // Todo: Lab Part 4.2
+        // Done: Lab Part 4.2
+        double startTime = System.nanoTime();
+        sort(array);
+        double endTime = System.nanoTime();
+
+        double sequentialTime = (endTime - startTime) / 1000;
+
+        this.c = sequentialTime / O(array.length);
 
     }
 
@@ -46,9 +53,8 @@ public class InsertionSort<E extends Comparable<E>> {
      * @return the estimated time in microseconds to sort an array of size n
      */
     public double predict(int n) {
-        // Todo: Lab Part 4.3
-
-        return Double.POSITIVE_INFINITY; // placeholder
+        // Done: Lab Part 4.3
+        return this.c * O(n);
     }
 
     /**
