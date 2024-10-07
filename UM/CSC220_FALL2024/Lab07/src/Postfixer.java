@@ -111,7 +111,7 @@ public class Postfixer {
      * @return fill in
      */
     public static double infixEvaluator(String line) {
-        //TODO: Lab Part 3
+        //DONE: Lab Part 3
         //HINT: You must use the algorithm described in Lab Part 4
         StringSplitter data = new StringSplitter(line);
         Stack<String> operators = new Stack<String>();
@@ -175,8 +175,40 @@ public class Postfixer {
      * @return fill in
      */
     public static String toPostfix(String line) {
-        //TODO: Lab Part 4
-        return null; // placeholder
+        //DONE: Lab Part 4
+        // Declare operator stack and postfix 
+        Stack<String> operators = new Stack<String>();
+        String postfix = "";
+        // Iterate over line
+        for (int i = 0; i < line.length(); i++) {
+            // Get character
+            char c = line.charAt(i);
+            // Check if character is operand
+            if (Character.isDigit(c)) {
+                // Add to postfix
+                postfix += c;
+                // Character is an operator
+            } else if (isOperator(String.valueOf(c))) {
+                String currentOperator = String.valueOf(c);
+                while (!operators.peek().equals("(") && hasPrecedence(operators.peek(), currentOperator)) {
+                    postfix += operators.pop();
+                }
+                // Push operator to stack
+                operators.push(currentOperator);
+                // Left Parenthesis
+            } else if (c == '(') {
+                // Push to stack
+                operators.push(String.valueOf(c));
+            } else if (c == ')') {
+                // Pop until left parenthesis
+                while (!operators.peek().equals("(")) {
+                    postfix += operators.pop();
+                }
+                // Discard left parenthesis
+                operators.pop();
+            }
+        }
+        return postfix;
     }
 
     public static void main(String[] args) {
@@ -187,36 +219,40 @@ public class Postfixer {
         //isOperator(String token) Tests
         //evaluate(double operand1, String operator, double operand2) Tests
         //Uncomment when you are ready to test Lab Part 3
-        // if (infixEvaluator("10 + 2") != 12) {
-        //     System.err.println("test1 failed --> your answer should have been 12");
-        // }
-        // if (infixEvaluator("10 - 2 * 2 + 1") != 7) {
-        //     System.err.println("test1 failed --> your answer should have been 7");
-        // }
-        // if (infixEvaluator("100 * 2 + 12") != 212) {
-        //     System.err.println("test2 failed --> your answer should have been 212");
-        // }
-        // if (infixEvaluator("100 * ( 2 + 12 )") != 1400) {
-        //     System.err.println("test3 failed --> your answer should have been 1400");
-        // }
-
+        if (infixEvaluator("10 + 2") != 12) {
+            System.err.println("test1 failed --> your answer should have been 12");
+        }
+        if (infixEvaluator("10 - 2 * 2 + 1") != 7) {
+            System.err.println("test1 failed --> your answer should have been 7");
+        }
+        if (infixEvaluator("100 * 2 + 12") != 212) {
+            System.err.println("test2 failed --> your answer should have been 212");
+        }
+        if (infixEvaluator("100 * ( 2 + 12 )") != 1400) {
+            System.err.println("test3 failed --> your answer should have been 1400");
+        }
         if (infixEvaluator("100 * ( 2 + 12 ) / 14") != 100) {
             System.err.println("test4 failed --> your answer should have been 100");
         }
         System.out.println("Lab Testing Done!!!");
 
         /* uncomment the below lines for assignment */
-        // if (!toPostfix(new String("(4+5)")).equals("45+"))
-        //     System.err.println("test1 failed --> should have been 45+");
-        // if (!toPostfix(new String("((4+5)*6)")).equals("45+6*"))
-        //     System.err.println("test2 failed --> should have been 45+6*");
-        // if (!toPostfix(new String("((4+((5*6)/7))-8)")).equals("456*7/+8-"))
-        //     System.err.println("test3 failed --> should have been 456*7/+8-");
-        // if (!toPostfix(new String("((4+5*(6-7))/8)")).equals("4567-*+8/"))
-        //     System.err.println("test4 failed --> should have been 4567-*+8/");
-        // if (!toPostfix(new String("(9+(8*7-(6/5^4)*3)*2)")).equals("987*654^/3*-2*+"))
-        //     System.err.println("test5 failed --> should have been 987*654^/3*-2*+");
-        // System.out.println("Assignment Testing Done!!!");
+        if (!toPostfix(new String("(4+5)")).equals("45+")) {
+            System.err.println("test1 failed --> should have been 45+");
+        }
+        if (!toPostfix(new String("((4+5)*6)")).equals("45+6*")) {
+            System.err.println("test2 failed --> should have been 45+6*");
+        }
+        if (!toPostfix(new String("((4+((5*6)/7))-8)")).equals("456*7/+8-")) {
+            System.err.println("test3 failed --> should have been 456*7/+8-");
+        }
+        if (!toPostfix(new String("((4+5*(6-7))/8)")).equals("4567-*+8/")) {
+            System.err.println("test4 failed --> should have been 4567-*+8/");
+        }
+        if (!toPostfix(new String("(9+(8*7-(6/5^4)*3)*2)")).equals("987*654^/3*-2*+")) {
+            System.err.println("test5 failed --> should have been 987*654^/3*-2*+");
+        }
+        System.out.println("Assignment Testing Done!!!");
     }
 
 }
