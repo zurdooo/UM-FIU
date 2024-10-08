@@ -3,11 +3,12 @@
 import java.util.*;
 
 /**
- * This class breaks up a string into a sequence of tokens using both whitespace and a list of special characters.
- * The special characters in this case are used to tokenize an arithmetic expression. For example, 
- * the expression "2*3.8/(4.95-7.8)" would be tokenized as "2", "*", "3.8", "/", "(", "4.95", "-", "7.8", ")" 
- * even though it has no whitespace to separate these tokens.
- * 
+ * This class breaks up a string into a sequence of tokens using both whitespace
+ * and a list of special characters. The special characters in this case are
+ * used to tokenize an arithmetic expression. For example, the expression
+ * "2*3.8/(4.95-7.8)" would be tokenized as "2", "*", "3.8", "/", "(", "4.95",
+ * "-", "7.8", ")" even though it has no whitespace to separate these tokens.
+ *
  */
 public class StringSplitter {
 
@@ -21,10 +22,10 @@ public class StringSplitter {
     public static final String SPECIAL_CHARACTER = "()+-*/^";
 
     /**
-     * Constructs a new StringSplitter for the specified string.
-     * This constructor tokenize the input string by loading it into a queue
-     * and finding the first token.
-     * 
+     * Constructs a new StringSplitter for the specified string. This
+     * constructor tokenize the input string by loading it into a queue and
+     * finding the first token.
+     *
      * @param line The string to be tokenized
      */
     public StringSplitter(String line) {
@@ -37,7 +38,7 @@ public class StringSplitter {
 
     /**
      * Returns true if there is another token in the string.
-     * 
+     *
      * @return boolean true if there is another token, false otherwise
      */
     public boolean hasNext() {
@@ -46,7 +47,7 @@ public class StringSplitter {
 
     /**
      * Returns and consumes the next token in the string.
-     * 
+     *
      * @return String representing the next token
      * @throws NoSuchElementException if no token is available
      */
@@ -59,7 +60,7 @@ public class StringSplitter {
 
     /**
      * Returns the next token without consuming it.
-     * 
+     *
      * @return String representing the next token
      * @throws NoSuchElementException if no token is available
      */
@@ -69,9 +70,10 @@ public class StringSplitter {
     }
 
     /**
-     * Finds the next token from the string. Tokens are determined by either 
-     * being special characters or sequences of non-whitespace, non-special characters.
-     * This method is responsible for updating the `token` variable with the next available token.
+     * Finds the next token from the string. Tokens are determined by either
+     * being special characters or sequences of non-whitespace, non-special
+     * characters. This method is responsible for updating the `token` variable
+     * with the next available token.
      */
     private void findNextToken() {
         while (!characters.isEmpty() && Character.isWhitespace(characters.peek())) {
@@ -96,9 +98,9 @@ public class StringSplitter {
     }
 
     /**
-     * Ensures that there is a token available. If no token is available, 
-     * this method throws a NoSuchElementException.
-     * 
+     * Ensures that there is a token available. If no token is available, this
+     * method throws a NoSuchElementException.
+     *
      * @throws NoSuchElementException if there are no tokens left
      */
     private void checkToken() {
