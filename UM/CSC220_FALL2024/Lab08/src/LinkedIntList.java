@@ -146,7 +146,7 @@ public class LinkedIntList {
      * is not found
      */
     public int lastIndexOf(int value) {
-        // TODO: Lab part 2.1
+        // DONE: Lab part 2.1
         // Initialize the index to return and current index  
         int idx = -1;
         int currIdx = 0;
@@ -197,7 +197,7 @@ public class LinkedIntList {
      * desired result.</p>
      */
     public void shift() {
-        // TODO: Assignment part 2.2
+        // DONE: Assignment part 2.2
 
         // Error checking
         if (this.front == null || this.front.next == null) {

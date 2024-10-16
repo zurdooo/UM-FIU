@@ -43,3 +43,8 @@ yearBorn = int(input("When were you born? "))
 
 age = date.today().year - yearBorn
 print(age)
+
+
+
+
+
