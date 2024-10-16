@@ -6,7 +6,6 @@ public class LinkedIntListTester {
 		LinkedIntList list = new LinkedIntList();
 
 		// ********************* TESTS FOR LAB ****************************//
-		/*
 		// *** testing lastIndexof		
 		if (list.lastIndexOf(3) != -1)
 			System.err.println("TEST FAILED -- lastIndexOf 0");
@@ -59,38 +58,38 @@ public class LinkedIntListTester {
 		if (!list6.toString().equals("[9, 4, 2, 8, 17, 4, 18]"))
 			System.err.println("TEST FAILED -- removeAll 4");
 		System.out.println("Testing Done!!!");				
-		*/			
+		
 
 		// ********************* TESTS FOR ASSIGNMENT ****************************//
 		
-		// // *** testing stutter
-		// int[] arr7 = {};
-		// LinkedIntList list7 = new LinkedIntList(arr7);
-		// list7.stutter();
+		// *** testing stutter
+		int[] arr7 = {};
+		LinkedIntList list7 = new LinkedIntList(arr7);
+		list7.stutter();
 
-		// if (!list7.toString().equals("[]"))
-		// 	System.err.println("TEST FAILED -- stutter 1");						
+		if (!list7.toString().equals("[]"))
+			System.err.println("TEST FAILED -- stutter 1");						
 		
-		// int[] arr8 = {1};
-		// LinkedIntList list8 = new LinkedIntList(arr8);
-		// list8.stutter();
+		int[] arr8 = {1};
+		LinkedIntList list8 = new LinkedIntList(arr8);
+		list8.stutter();
 
-		// if (!list8.toString().equals("[1, 1]"))
-		// 	System.err.println("TEST FAILED -- stutter 2");								
+		if (!list8.toString().equals("[1, 1]"))
+			System.err.println("TEST FAILED -- stutter 2");								
 		
-		// int[] arr9 = {1, 8};
-		// LinkedIntList list9 = new LinkedIntList(arr9);
-		// list9.stutter();
+		int[] arr9 = {1, 8};
+		LinkedIntList list9 = new LinkedIntList(arr9);
+		list9.stutter();
 
-		// if (!list9.toString().equals("[1, 1, 8, 8]"))
-		// 	System.err.println("TEST FAILED -- stutter 3");
+		if (!list9.toString().equals("[1, 1, 8, 8]"))
+			System.err.println("TEST FAILED -- stutter 3");
 		
-		// int[] arr10 = {1, 8, 19, 4, 17};
-		// LinkedIntList list10 = new LinkedIntList(arr10);
-		// list10.stutter();
+		int[] arr10 = {1, 8, 19, 4, 17};
+		LinkedIntList list10 = new LinkedIntList(arr10);
+		list10.stutter();
 
-		// if (!list10.toString().equals("[1, 1, 8, 8, 19, 19, 4, 4, 17, 17]"))
-		// 	System.err.println("TEST FAILED -- stutter 4");		
+		if (!list10.toString().equals("[1, 1, 8, 8, 19, 19, 4, 4, 17, 17]"))
+			System.err.println("TEST FAILED -- stutter 4");		
 		
 		// *** testing shift
 		int[] arr11 = {};
