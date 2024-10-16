@@ -175,7 +175,31 @@ public class LinkedIntList {
      * @param value the integer value to remove from the list
      */
     public void removeAll(int value) {
-        // TODO: Lab part 2.2
+        // DONE: Lab part 2.2
+        // Initialize the previous and current nodes
+        ListNode prev = null;
+        ListNode curr = front;
+        boolean first = true;
+
+        // Traverse the list
+        while (curr != null) {
+            // If the value is found, remove it
+            if (curr.data == value) {
+                // If the first node is the value, update the front
+                if (first) {
+                    front = curr.next;
+                    curr = front;
+                } else {
+                    prev.next = curr.next;
+                    curr = curr.next;
+                }
+            } else {
+                // Move to the next node
+                prev = curr;
+                curr = curr.next;
+                first = false;
+            }
+        }
     }
 
     /**
@@ -183,7 +207,23 @@ public class LinkedIntList {
      * two of that integer. If the list is empty, this method does nothing.
      */
     public void stutter() {
-        // TODO: Assignment part 2.1
+        // DONE: Assignment part 2.1
+        // Initialize the current node
+        ListNode curr = front;
+        // If the list is empty, do nothing
+        if (curr == null) {
+            return;
+        }
+        // Traverse the list
+        while (curr != null) {
+            // Create a new node with the same data as the current node
+            ListNode newNode = new ListNode(curr.data);
+            // Insert the new node after the current node
+            newNode.next = curr.next;
+            curr.next = newNode;
+            // Move to the next node
+            curr = newNode.next;
+        }
     }
 
     /**
