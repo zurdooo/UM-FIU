@@ -21,6 +21,14 @@
       ]
     }
   },
-  "cSpell.words": ["Assignment", "Indexof", "Postfixer", "Prcd", "retval"],
+  "cSpell.words": [
+    "Assignment",
+    "buil",
+    "Indexof",
+    "perfectify",
+    "Postfixer",
+    "Prcd",
+    "retval"
+  ],
   "cSpell.ignoreWords": ["Lab"]
 }
