@@ -180,10 +180,10 @@ public class IntTree {
         // because we're counting empty branches at each node and adding them up
         int count = 0;
         if (root.left == null) {
-            count++;
+            count += 1;
         }
         if (root.right == null) {
-            count++;
+            count += 1;
         }
         // count gets the empty branches at current node
         // recursive calls add empty branches from subtrees
@@ -223,8 +223,17 @@ public class IntTree {
      * @return the depth of the tree, or 0 if the tree is empty
      */
     public int getDepth() {
-        //TODO: Lab part 4
-        return 0;// Placeholder
+        if (root == null) {
+            return 0;
+        }
+        return getDepth(root);
+    }
+
+    private int getDepth(IntNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return (Math.max(getDepth(node.left), getDepth(node.right)) + 1);
     }
 
     //==================================================	
@@ -236,8 +245,22 @@ public class IntTree {
      * @return true if the value occurs at least three times, false otherwise
      */
     public boolean luckyTree(int value) {
-        //TODO: Assignment Part 2
-        return false; //Placeholder
+        if (root == null) {
+            return false;
+        }
+        return luckyTree(root, value) >= 3;
+    }
+
+    private int luckyTree(IntNode node, int value) {
+        if (node == null) {
+            return 0;
+        }
+
+        if (node.data == value) {
+            return (luckyTree(node.left, value) + luckyTree(node.right, value)) + 1;
+        }
+
+        return (luckyTree(node.left, value) + luckyTree(node.right, value));
     }
 
     /**
@@ -250,7 +273,28 @@ public class IntTree {
      *
      */
     public void perfectify() {
-        //TODO: Assignment Part 3
+        // Get Target Depth
+        int target_depth = getDepth();
+        perfectify(root, target_depth - 1, 0);
+    }
+
+    private void perfectify(IntNode node, int targetLevel, int currentLevel) {
+        if (node == null) {
+            return;
+        } else if (currentLevel < targetLevel) {
+            // Create left child if missing
+            if (node.left == null) {
+                node.left = new IntNode(-1);
+            }
+            // Create right child if missing
+            if (node.right == null) {
+                node.right = new IntNode(-1);
+            }
+
+            // Always recurse on both children, whether they were just created or already existed
+            perfectify(node.left, targetLevel, currentLevel + 1);
+            perfectify(node.right, targetLevel, currentLevel + 1);
+        }
     }
 
     /**
@@ -263,8 +307,20 @@ public class IntTree {
      */
     @Override
     public String toString() {
-        //TODO: Assignment Part 1
-        return null;
+        if (root == null) {
+            return "";
+        }
+        return toString(root);
+    }
+
+    private String toString(IntNode node) {
+        if (node == null) {
+            return "empty";
+        } else if (node.left == null && node.right == null) {
+            return String.valueOf(node.data);
+        } else {
+            return "(" + node.data + ", " + toString(node.left) + ", " + toString(node.right) + ")";
+        }
     }
 
 }
