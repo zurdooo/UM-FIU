@@ -44,7 +44,7 @@ public class MaxHeap {
         // TODO for Assignment Part 2
 
         // Initialize the heap with the same size as input array
-        size = 0;  // Start with size 0 since offer will increment it
+        size = 0; // Start with size 0 since offer will increment it
         theData = new int[arr.length];
 
         // Add each element using offer to maintain heap property
@@ -118,7 +118,7 @@ public class MaxHeap {
      * Returns a string representation of the heap in array form.
      *
      * @return a comma-separated string of the heap elements NOTE this method
-     * should *not* be modified.
+     *         should *not* be modified.
      */
     public String toString() {
         String s = "";
@@ -142,8 +142,8 @@ public class MaxHeap {
      * indentation to indicate the level of each node.
      *
      * @param root_indx the index of the root of the subtree
-     * @param level the depth level for indentation NOTE this method should not
-     * be modified.
+     * @param level     the depth level for indentation NOTE this method should not
+     *                  be modified.
      */
     private void printSideways(int root_indx, int level) {
         if (root_indx < theData.length) {
@@ -161,7 +161,7 @@ public class MaxHeap {
      *
      * @param arr the array to compare with the heap's data
      * @return true if the heap data matches the input array, false otherwise
-     * NOTE this method should not be modified.
+     *         NOTE this method should not be modified.
      */
     public boolean IsEqual(int[] arr) {
         if (arr.length != theData.length) {
@@ -188,7 +188,8 @@ public class MaxHeap {
      * adjusts the heap to maintain the max heap property
      *
      * @param element the element to be added to the heap pre: theData is in
-     * heap order post: the element is added and theData is in heap order
+     *                heap order post: the element is added and theData is in heap
+     *                order
      */
     public void offer(int element) {
         // TODO for Lab Part 3
@@ -228,7 +229,8 @@ public class MaxHeap {
      * If the heap is empty, returns -1.
      *
      * @return the maximum element in the heap, or -1 if empty pre: theData is
-     * in heap order post: the max item is removed, and theData is in heap order
+     *         in heap order post: the max item is removed, and theData is in heap
+     *         order
      */
     public int poll() {
         // TODO for Lab Part 4
@@ -258,8 +260,9 @@ public class MaxHeap {
      * Sorts the given array in place using the heap sort algorithm.
      *
      * @param arr the array to be sorted pre: the array is unordered post: the
-     * array is sorted in ascending order NOTE do *not* modify the signatures of
-     * sort(), heapify(), or siftDown()
+     *            array is sorted in ascending order NOTE do *not* modify the
+     *            signatures of
+     *            sort(), heapify(), or siftDown()
      */
     public void sort(int[] arr) {
         this.theData = arr;
@@ -306,7 +309,8 @@ public class MaxHeap {
         // Get the left child of current index
         int left = leftChild(index);
 
-        // Continue while there is at least a left child (if left >= size, node is a leaf)
+        // Continue while there is at least a left child (if left >= size, node is a
+        // leaf)
         while (left < size) {
             // Get the right child index
             int right = rightChild(index);
@@ -314,17 +318,17 @@ public class MaxHeap {
             int max;
 
             // Find which child is larger
-            // First check if right child exists (right < size) 
+            // First check if right child exists (right < size)
             // Then compare the values at right and left
             if (right < size && theData[right] > theData[left]) {
-                max = right;  // Right child is larger
+                max = right; // Right child is larger
             } else {
-                max = left;   // Left child is larger (or right child doesn't exist)
+                max = left; // Left child is larger (or right child doesn't exist)
             }
 
             // If current node is >= the larger child, heap property is satisfied
             if (theData[index] >= theData[max]) {
-                break;  // Exit loop as no more sifting needed
+                break; // Exit loop as no more sifting needed
             }
 
             // Otherwise, swap current node with the larger child
