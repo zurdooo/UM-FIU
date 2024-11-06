@@ -19,37 +19,30 @@ public class MaxHeap {
     private int size;
 
     /**
-     * Constructor to initialize the heap array with a specified size.
+     * Creates a heap with specified capacity.
      *
-     * This function will create the array (heap) with the specified size and
-     * initialize all of its elements to be zero. You need to be careful about
-     * whether any other field needs to be initialized at this stage
+     * Initializes an empty heap array of given size with all elements set to zero.
      *
-     * @param maxsize the size for the heap
+     * @param capacity maximum size of the heap
      */
-    public MaxHeap(int maxsize) {
-        // TODO Lab Part 2
-
+    public MaxHeap(int capacity) {
         size = 0;
-        theData = new int[maxsize];
+        theData = new int[capacity];
     }
 
     /**
-     * Constructor that initializes a heap and organizes the input array to form
-     * a valid max heap.
+     * Creates a heap from an existing array.
      *
-     * @param arr the input array to be organized into a max heap
+     * Builds a valid max heap by inserting array elements sequentially.
+     *
+     * @param inputArr the array to convert into a heap
      */
-    public MaxHeap(int[] arr) {
-        // TODO for Assignment Part 2
-
-        // Initialize the heap with the same size as input array
-        size = 0; // Start with size 0 since offer will increment it
-        theData = new int[arr.length];
-
-        // Add each element using offer to maintain heap property
-        for (int i = 0; i < arr.length; i++) {
-            offer(arr[i]);
+    public MaxHeap(int[] inputArr) {
+        size = 0;
+        theData = new int[inputArr.length];
+        
+        for (int i = 0; i < inputArr.length; i++) {
+            offer(inputArr[i]);
         }
     }
 
@@ -182,91 +175,67 @@ public class MaxHeap {
     }
 
     /**
-     * Inserts an element into the heap, maintaining the max-heap property.
+     * Adds new element to heap.
      *
-     * Adds element to the latest available position in the heap array, then
-     * adjusts the heap to maintain the max heap property
+     * Places element at end and bubbles up to maintain heap order.
      *
-     * @param element the element to be added to the heap pre: theData is in
-     *                heap order post: the element is added and theData is in heap
-     *                order
+     * @param newElement the element to add
      */
-    public void offer(int element) {
-        // TODO for Lab Part 3
-
-        // Check if heap is full
+    public void offer(int newElement) {
         if (size >= theData.length) {
             return;
         }
 
-        // Place new element at the end of the heap
-        theData[size] = element;
-        int current = size;
+        theData[size] = newElement;
+        int currentPos = size;
 
-        // Bubble up: compare with parent and swap if needed
-        while (current > 0) {
-            int parent = parent(current);
-            // If parent is smaller than current element, swap them
-            if (theData[parent] < theData[current]) {
-                swap(current, parent);
-                current = parent;
+        while (currentPos > 0) {
+            int parentPos = parent(currentPos);
+            if (theData[parentPos] < theData[currentPos]) {
+                swap(currentPos, parentPos);
+                currentPos = parentPos;
             } else {
-                // Parent is larger or equal, heap property is satisfied
                 break;
             }
         }
 
-        // Increment size after successful insertion
         size++;
     }
 
     /**
-     * Removes and returns the maximum element in the heap (root).
+     * Removes and returns the maximum element.
      *
-     * To maintain the Heap Property: Swap the root with the last leaf, then
-     * sift the new root down to restore heap property
+     * Moves last element to root and sifts down to restore heap order.
      *
-     * If the heap is empty, returns -1.
-     *
-     * @return the maximum element in the heap, or -1 if empty pre: theData is
-     *         in heap order post: the max item is removed, and theData is in heap
-     *         order
+     * @return maximum element or -1 if empty
      */
     public int poll() {
-        // TODO for Lab Part 4
-
-        // If heap is empty, return -1
         if (size == 0) {
             return -1;
         }
 
-        // Store the maximum value (root) to return later
-        int max = theData[0];
-
-        // Move the last element to the root and clear the last position
+        int maxVal = theData[0];
         theData[0] = theData[size - 1];
-        theData[size - 1] = 0; // Clear the last position
+        theData[size - 1] = 0;
         size--;
 
-        // Restore heap property by sifting down the new root
         if (size > 0) {
             siftDown(0);
         }
 
-        return max;
+        return maxVal;
     }
 
     /**
-     * Sorts the given array in place using the heap sort algorithm.
+     * Sorts array using heap sort algorithm.
      *
-     * @param arr the array to be sorted pre: the array is unordered post: the
-     *            array is sorted in ascending order NOTE do *not* modify the
-     *            signatures of
-     *            sort(), heapify(), or siftDown()
+     * Heapifies array then repeatedly extracts max element.
+     *
+     * @param inputArr array to be sorted
      */
-    public void sort(int[] arr) {
-        this.theData = arr;
-        this.size = arr.length;
+    public void sort(int[] inputArr) {
+        this.theData = inputArr;
+        this.size = inputArr.length;
 
         heapify(size - 1);
         while (size > 1) {
