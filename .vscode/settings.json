@@ -33,5 +33,6 @@
   "cSpell.ignoreWords": ["Lab"],
   "code-runner.executorMap": {
     "java": "cd $dir && javac -d ../out $fileName && java -cp ../out lab10.$fileNameWithoutExt"
-  }
+  },
+  "java.debug.settings.onBuildFailureProceed": true
 }

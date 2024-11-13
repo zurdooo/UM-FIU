@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "QuadraticProbingHashTable",
+      "request": "launch",
+      "mainClass": "QuadraticProbingHashTable",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "QuadraticProbingHashTable",
+      "request": "launch",
+      "mainClass": "QuadraticProbingHashTable",
+      "projectName": "UM-FIU_6d0ae0e2"
+    },
+    {
+      "type": "java",
       "name": "Tester",
       "request": "launch",
       "mainClass": "Tester",
