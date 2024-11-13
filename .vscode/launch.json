@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Lab10/IntTreeTester",
+      "request": "launch",
+      "mainClass": "Lab10/IntTreeTester",
+      "projectName": "UM-FIU_e7ffa63b"
+    },
+    {
+      "type": "java",
       "name": "QuadraticProbingHashTable",
       "request": "launch",
       "mainClass": "QuadraticProbingHashTable",
