@@ -1,4 +1,4 @@
-package lab10;
+// package lab10;
 
 /**
  * MaxHeap class represents a max heap, a complete binary tree where each node's
@@ -21,7 +21,8 @@ public class MaxHeap {
     /**
      * Creates a heap with specified capacity.
      *
-     * Initializes an empty heap array of given size with all elements set to zero.
+     * Initializes an empty heap array of given size with all elements set to
+     * zero.
      *
      * @param capacity maximum size of the heap
      */
@@ -40,7 +41,7 @@ public class MaxHeap {
     public MaxHeap(int[] inputArr) {
         size = 0;
         theData = new int[inputArr.length];
-        
+
         for (int i = 0; i < inputArr.length; i++) {
             offer(inputArr[i]);
         }
@@ -111,7 +112,7 @@ public class MaxHeap {
      * Returns a string representation of the heap in array form.
      *
      * @return a comma-separated string of the heap elements NOTE this method
-     *         should *not* be modified.
+     * should *not* be modified.
      */
     public String toString() {
         String s = "";
@@ -135,8 +136,8 @@ public class MaxHeap {
      * indentation to indicate the level of each node.
      *
      * @param root_indx the index of the root of the subtree
-     * @param level     the depth level for indentation NOTE this method should not
-     *                  be modified.
+     * @param level the depth level for indentation NOTE this method should not
+     * be modified.
      */
     private void printSideways(int root_indx, int level) {
         if (root_indx < theData.length) {
@@ -154,7 +155,7 @@ public class MaxHeap {
      *
      * @param arr the array to compare with the heap's data
      * @return true if the heap data matches the input array, false otherwise
-     *         NOTE this method should not be modified.
+     * NOTE this method should not be modified.
      */
     public boolean IsEqual(int[] arr) {
         if (arr.length != theData.length) {
