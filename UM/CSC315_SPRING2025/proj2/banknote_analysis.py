@@ -14,10 +14,10 @@ LABELS = {0: "real", 1: "counterfeit"}
 
 
 def load_data():
-    # load csv and clean up any bad rows
-    df = pd.read_csv(DATA_PATH, names=FEATURES + ["class"])
+    # load csv
+    df = pd.read_csv(DATA_PATH)
+    df.columns = FEATURES + ["class"]
     df = df.apply(pd.to_numeric)
-    df = df.dropna().reset_index(drop=True)
     df["class"] = df["class"].astype(int)
     return df
 
@@ -128,9 +128,7 @@ def plot_results(df, predicted, centroids, accuracy, classifier_name):
             ax.set_xlabel(x_feature)
             ax.set_ylabel(y_feature)
 
-            add_centroid_annotation(
-                ax, centroids.loc[0], x_feature, y_feature, "real"
-            )
+            add_centroid_annotation(ax, centroids.loc[0], x_feature, y_feature, "real")
             add_centroid_annotation(
                 ax, centroids.loc[1], x_feature, y_feature, "counterfeit"
             )
@@ -159,10 +157,9 @@ def main():
         predicted = classify_distance(df, centroids)
 
     accuracy = float((predicted == df["class"].to_numpy()).mean() * 100)
+    print(f"Accuracy ({classifier}): {accuracy:.2f}%")
 
     plot_results(df, predicted, centroids, accuracy, classifier)
-
-    print(f"Accuracy ({classifier}): {accuracy:.2f}%")
 
 
 if __name__ == "__main__":
